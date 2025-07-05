@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Valid User",
+    "input": {
+      "name": "Durai",
+      "email": "durai@example.com"
+    },
+    "expectedStatus": 201
+  },
+  {
+    "name": "Missing Email",
+    "input": {
+      "name": "Durai"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "name": "Invalid Email",
+    "input": {
+      "name": "Durai",
+      "email": "invalid"
+    },
+    "expectedStatus": 400
+  }
+]

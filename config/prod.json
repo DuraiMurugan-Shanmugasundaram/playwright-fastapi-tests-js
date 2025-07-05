@@ -1,0 +1,1 @@
+{"baseURL": "https://api.example.com", "email": {"service": "gmail", "user": "prod_email@example.com", "pass": "prod_app_password", "to": "prod_team@example.com"}}

@@ -1,0 +1,1 @@
+{"baseURL": "https://qa-api.example.com", "email": {"service": "gmail", "user": "qa_email@example.com", "pass": "qa_app_password", "to": "qa_team@example.com"}}

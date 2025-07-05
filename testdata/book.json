@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Valid Book",
+    "input": {
+      "title": "API Testing with Playwright",
+      "author": "Durai",
+      "isbn": "1112223334"
+    },
+    "expectedStatus": 201
+  },
+  {
+    "name": "Missing Title",
+    "input": {
+      "author": "Durai",
+      "isbn": "1112223334"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "name": "Invalid ISBN",
+    "input": {
+      "title": "Invalid",
+      "author": "Tester",
+      "isbn": "abc123"
+    },
+    "expectedStatus": 400
+  }
+]

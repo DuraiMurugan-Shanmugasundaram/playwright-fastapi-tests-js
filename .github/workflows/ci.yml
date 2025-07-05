@@ -1,0 +1,52 @@
+
+name: Playwright API Automation CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: window
+    steps:
+      - jobs: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
+      - name: Run Tests
+        run: |
+          echo "Running tests for NODE_ENV=dev"
+          NODE_ENV=dev npx playwright test
+
+      - name: Generate HTML Report
+        run: |
+          echo "HTML Report generated at reports/html-report"
+          ls -l reports/html-report
+
+      - name: Upload Report Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-html-report
+          path: reports/html-report
+
+      - name: Send Report via Email
+        run: |
+          echo "Sending email report..."
+          node email/sendReport.js
+        env:
+          EMAIL_SERVICE: ${{ secrets.EMAIL_SERVICE }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
