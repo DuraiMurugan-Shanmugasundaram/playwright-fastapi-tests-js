@@ -1,9 +1,9 @@
-
+//Author - DuraiMurugan_Shanmugasundaram
 import { test, expect } from '@playwright/test';
 import { loadConfig } from '../utils/configLoader';
 const config = loadConfig();
 
-test('@create @Smoke Create Book with valid data - should return 201 and match input', async ({ request }) => {
+test('@Create @Smoke Create Book with valid data - should return 201 and match input', async ({ request }) => {
   const payload = { title: 'Effective Testing', author: 'Jane Doe', isbn: '9876543210' };
   const res = await request.post('/books', { data: payload });
   expect(res.status()).toBe(201);
@@ -11,7 +11,7 @@ test('@create @Smoke Create Book with valid data - should return 201 and match i
   expect(json).toMatchObject(payload);
 });
 
-test('@create @Neg Create Book with missing title - should return 400', async ({ request }) => {
+test('@Create @Neg Create Book with missing title - should return 400', async ({ request }) => {
   const payload = { author: 'Jane Doe', isbn: '9876543210' };
   const res = await request.post('/books', { data: payload });
   expect(res.status()).toBeGreaterThanOrEqual(400);
