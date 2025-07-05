@@ -1,25 +1,30 @@
-[
-  {
-    "name": "Valid User",
-    "input": {
+{
+  "positive": [
+    {
+      "name": "Valid User",
+      "email": "valid@example.com",
+      "expectedStatus": 201
+    },
+    {
       "name": "Durai",
-      "email": "durai@example.com"
+      "email": "durai@automation.com",
+      "expectedStatus": 201
+    }
+  ],
+  "negative": [
+    {
+      "name": "",
+      "email": "no-name@example.com",
+      "expectedStatus": 400
     },
-    "expectedStatus": 201
-  },
-  {
-    "name": "Missing Email",
-    "input": {
-      "name": "Durai"
+    {
+      "name": "Bad Email",
+      "email": "bademail",
+      "expectedStatus": 400
     },
-    "expectedStatus": 400
-  },
-  {
-    "name": "Invalid Email",
-    "input": {
-      "name": "Durai",
-      "email": "invalid"
-    },
-    "expectedStatus": 400
-  }
-]
+    {
+      "name": "Missing Email",
+      "expectedStatus": 400
+    }
+  ]
+}

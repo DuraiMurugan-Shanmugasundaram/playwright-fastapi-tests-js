@@ -84,3 +84,32 @@ test('Delete User with invalid ID - should return 404 and error detail', async (
   const json = await res.json();
   expect(json).toHaveProperty('detail');
 });
+
+
+//As now the test data is passed directly inside the test files as "payload objects", like below 
+//  --> const payload = { name: 'Durai', email: 'durai@example.com' };
+
+//**Benefits of Moving to JSON-Based Test Data**//
+//Migrating test inputs into external JSON files will help you:
+
+// -->Separate logic from data
+// -->Reuse test data across multiple tests
+// -->Maintain large test data easily
+// -->Enable data-driven testing using loops or test.describe()
+
+//Code Example:
+import { test, expect } from '@playwright/test';
+import fs from 'fs';
+
+const userData = JSON.parse(fs.readFileSync('./testdata/user.json', 'utf-8'));
+
+for (const user of userData.positive) {
+  test(`Create User with valid data - Positive: ${user.name}`, async ({ request }) => {
+    const res = await request.post('/users', { data: { name: user.name, email: user.email } });
+    expect(res.status()).toBe(user.expectedStatus);
+    const json = await res.json();
+    expect(json).toHaveProperty('id');
+    expect(json.name).toBe(user.name);
+    expect(json.email).toBe(user.email);
+  });
+}
