@@ -174,7 +174,7 @@ NODE_ENV=qa npx playwright test         # Run against QA environment
 - Email setup via `.env` or `config/dev.json`
 - Sends test summary, HTML report, and failure screenshots
 ```bash
-node email/sendReport.js
+node email/sendReport.jsx`
 ```
 
 ## 🌐 GitHub

@@ -1,6 +1,9 @@
 
 const fs = require('fs');
 const path = require('path');
+const dotenv = require ('dotenv');
+
+dotenv.config(); // Load .env variables
 
 function loadConfig() {
   const env = process.env.NODE_ENV || 'dev';  //Set the environment on where your tests should run(dev/prod/qa)
