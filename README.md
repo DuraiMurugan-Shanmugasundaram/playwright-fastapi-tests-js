@@ -87,8 +87,8 @@ To set up this project locally or in CI/CD pipelines:
 - Visul Studio Code Editor
 - npm (v9 or later)
 - Git CLI
-- Internet connection (to install dependencies and run CI workflows)
 - FastAPI service running locally or remotely
+- Internet connection (to install dependencies and run CI workflows)
 
 ### 📦 Installation Steps
 
